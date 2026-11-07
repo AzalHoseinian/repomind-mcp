@@ -15,13 +15,21 @@ pnpm build
 pnpm test
 ```
 
-Run the server over stdio: `node dist/server.js`
+Run the server over stdio:
+
+```bash
+REPOMIND_WORKSPACE=/absolute/path/to/your/projects node dist/server.js
+```
+
+`REPOMIND_WORKSPACE` is required. File access is confined to this directory
+(`../`, absolute paths outside it, and symlinks that escape it are rejected).
 
 ## Layout
 
 - `src/tools/` – thin MCP tool handlers (validate input, call a service)
 - `src/services/` – business logic, no MCP types
 - `src/config/` – configuration (env based, no secrets in the repo)
+- `src/workspace/` – path confinement helpers
 - `tests/` – Vitest tests
 
 ## License
