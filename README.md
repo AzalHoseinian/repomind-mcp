@@ -3,7 +3,7 @@
 An MCP (Model Context Protocol) server that helps AI coding agents understand
 repositories, analyze issues and plan changes safely.
 
-> Status: early scaffold. The only tool today is `ping`.
+> Status: early. Tools: `ping`, `analyze_repo` (read-only: languages, manifests, top-level structure).
 
 ## Development
 

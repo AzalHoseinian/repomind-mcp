@@ -4,8 +4,9 @@ import { ConfigError, loadConfig } from "./config/config.js";
 import { createServer } from "./createServer.js";
 
 // stdout is the MCP wire: never console.log here, log to stderr only.
+let config;
 try {
-  loadConfig(process.env);
+  config = loadConfig(process.env);
 } catch (err) {
   if (err instanceof ConfigError) {
     console.error(`repomind-mcp: ${err.message}`);
@@ -14,6 +15,6 @@ try {
   throw err;
 }
 
-serveStdio(() => createServer(), {
+serveStdio(() => createServer(config.workspace), {
   onerror: (err) => console.error("repomind-mcp error:", err.message),
 });
