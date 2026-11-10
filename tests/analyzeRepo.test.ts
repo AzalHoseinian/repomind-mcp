@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { createServer } from "../src/createServer.js";
+import { noIssues } from "./fakes.js";
 import { LIMITS, analyzeRepo, parseDependencies } from "../src/services/analyzeRepo.js";
 
 function tmp(): string {
@@ -63,7 +64,7 @@ describe("analyzeRepo", () => {
 
 describe("analyze_repo tool", () => {
   async function call(workspace: string, args: unknown) {
-    const server = createServer(workspace) as unknown as {
+    const server = createServer(workspace, noIssues) as unknown as {
       _registeredTools: Record<string, { handler?: Function; callback?: Function }>;
     };
     const tool = server._registeredTools["analyze_repo"]!;
