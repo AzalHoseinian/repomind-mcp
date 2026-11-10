@@ -3,7 +3,7 @@
 An MCP (Model Context Protocol) server that helps AI coding agents understand
 repositories, analyze issues and plan changes safely.
 
-> Status: early. Tools: `ping`, `analyze_repo` (read-only: languages, manifests, top-level structure), `list_issues` (read-only GitHub issues).
+> Status: early. Tools: `ping`, `analyze_repo` (read-only: languages, manifests, top-level structure), `list_issues` (read-only GitHub issues), `find_duplicate_issues` (read-only, ranks existing issues by word similarity to a draft).
 
 ## Development
 

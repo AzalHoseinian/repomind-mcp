@@ -1,6 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/server";
 import type { IssuesClient } from "./github/issuesClient.js";
 import { registerAnalyzeRepoTool } from "./tools/analyzeRepo.js";
+import { registerFindDuplicateIssuesTool } from "./tools/findDuplicateIssues.js";
 import { registerListIssuesTool } from "./tools/listIssues.js";
 import { registerPingTool } from "./tools/ping.js";
 
@@ -12,5 +13,6 @@ export function createServer(workspace: string, issuesClient: IssuesClient): Mcp
   registerPingTool(server);
   registerAnalyzeRepoTool(server, workspace);
   registerListIssuesTool(server, issuesClient);
+  registerFindDuplicateIssuesTool(server, issuesClient);
   return server;
 }
