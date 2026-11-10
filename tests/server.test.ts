@@ -9,5 +9,6 @@ describe("server", () => {
     expect(Object.keys(server._registeredTools)).toContain("analyze_repo");
     expect(Object.keys(server._registeredTools)).toContain("list_issues");
     expect(Object.keys(server._registeredTools)).toContain("find_duplicate_issues");
+    expect(Object.keys(server._registeredTools)).toContain("draft_issue");
   });
 });
