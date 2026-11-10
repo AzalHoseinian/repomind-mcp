@@ -3,7 +3,7 @@
 An MCP (Model Context Protocol) server that helps AI coding agents understand
 repositories, analyze issues and plan changes safely.
 
-> Status: early. Tools: `ping`, `analyze_repo` (read-only: languages, manifests, top-level structure).
+> Status: early. Tools: `ping`, `analyze_repo` (read-only: languages, manifests, top-level structure), `list_issues` (read-only GitHub issues).
 
 ## Development
 
@@ -21,7 +21,7 @@ Run the server over stdio:
 REPOMIND_WORKSPACE=/absolute/path/to/your/projects node dist/server.js
 ```
 
-`REPOMIND_WORKSPACE` is required. File access is confined to this directory
+`REPOMIND_WORKSPACE` is required. `GITHUB_TOKEN` is optional (use a fine-grained token with read-only Issues permission; without it public repos work with a low rate limit). File access is confined to this directory
 (`../`, absolute paths outside it, and symlinks that escape it are rejected).
 
 ## Layout

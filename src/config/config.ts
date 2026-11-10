@@ -10,10 +10,13 @@ const EnvSchema = z.object({
       (p) => existsSync(p) && statSync(p).isDirectory(),
       "REPOMIND_WORKSPACE must be an existing directory",
     ),
+  GITHUB_TOKEN: z.string().min(1).optional(),
 });
 
 export interface Config {
   workspace: string;
+  /** Never log or return this value. */
+  githubToken?: string;
 }
 
 export class ConfigError extends Error {
@@ -30,5 +33,8 @@ export function loadConfig(env: Record<string, string | undefined>): Config {
     const details = parsed.error.issues.map((i) => i.message).join("; ");
     throw new ConfigError(`Invalid configuration: ${details}`);
   }
-  return { workspace: parsed.data.REPOMIND_WORKSPACE };
+  const { REPOMIND_WORKSPACE, GITHUB_TOKEN } = parsed.data;
+  return GITHUB_TOKEN
+    ? { workspace: REPOMIND_WORKSPACE, githubToken: GITHUB_TOKEN }
+    : { workspace: REPOMIND_WORKSPACE };
 }
