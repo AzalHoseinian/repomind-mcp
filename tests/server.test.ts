@@ -10,5 +10,6 @@ describe("server", () => {
     expect(Object.keys(server._registeredTools)).toContain("list_issues");
     expect(Object.keys(server._registeredTools)).toContain("find_duplicate_issues");
     expect(Object.keys(server._registeredTools)).toContain("draft_issue");
+    expect(Object.keys(server._registeredTools)).toContain("create_issue");
   });
 });

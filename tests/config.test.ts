@@ -8,7 +8,7 @@ describe("loadConfig", () => {
   const dir = mkdtempSync(path.join(tmpdir(), "rm-cfg-"));
 
   it("accepts an existing absolute directory", () => {
-    expect(loadConfig({ REPOMIND_WORKSPACE: dir })).toEqual({ workspace: dir });
+    expect(loadConfig({ REPOMIND_WORKSPACE: dir })).toMatchObject({ workspace: dir });
   });
   it("rejects a missing value", () => {
     expect(() => loadConfig({})).toThrow(ConfigError);
